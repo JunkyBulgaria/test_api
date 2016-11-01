@@ -98,7 +98,7 @@ class SQL
   function mysql_escape($value){
   $value = str_replace(array('<script','</script>'),array("",""),$value);
   if( is_array($value) ) {
-    return array_map( array(&$this,'quote_smart') , $value);
+    return array_map( array(&$this,'mysql_escape') , $value);
   } else {
     if( $value === '' ) $value = NULL;
         if (function_exists('mysql_real_escape_string'))
